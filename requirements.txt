@@ -6,3 +6,5 @@ einops
 scikit-image
 pytest
 pytest-cov
+jupyter
+ipykernel

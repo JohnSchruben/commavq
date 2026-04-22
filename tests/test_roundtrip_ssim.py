@@ -89,6 +89,10 @@ def test_roundtrip_ssim_above_threshold(decoder, source_frames):
   decoded = transpose_and_clip(decoded)
   assert decoded.shape == source_frames.shape
 
+  from PIL import Image
+  grid = np.concatenate(decoded, axis=1)
+  Image.fromarray(grid).save(str(REPO_ROOT / "roundtrip_decoded.png"))
+
   # Per-frame SSIM, averaged over the batch. channel_axis=-1 treats the RGB
   # channels jointly (one SSIM per frame, not per channel).
   ssims = [
